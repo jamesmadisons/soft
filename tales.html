@@ -1,0 +1,293 @@
+<html class="tales">
+  <head>
+    
+       <title> stories i've written ฅ(＾・ω・＾ฅ)゜♡ </title>
+  
+    <script type="text/javascript">
+      var msg  = document.title;
+      var speed = 150;
+      var endChar = "... ";
+      var pos = 0;
+      
+      function moveTitle()
+      {
+       	var ml = msg.length;
+      		
+      	title = msg.substr(pos,ml) + endChar + msg.substr(0,pos);
+    	document.title = title;
+      	
+        pos++;
+    	if (pos > ml) pos=0;
+        window.setTimeout("moveTitle()",speed);
+      }
+  
+      moveTitle();
+  </script>
+    
+    <script type="text/javascript">
+// <![CDATA[
+var colour="#F9CD48"; // in addition to "random" can be set to any valid colour eg "#f0f" or "red"
+var sparkles=50;
+
+/****************************
+*  Tinkerbell Magic Sparkle *
+*(c)2005-13 mf2fm web-design*
+*  http://www.mf2fm.com/rv  *
+* DON'T EDIT BELOW THIS BOX *
+****************************/
+var x=ox=400;
+var y=oy=300;
+var swide=800;
+var shigh=600;
+var sleft=sdown=0;
+var tiny=new Array();
+var star=new Array();
+var starv=new Array();
+var starx=new Array();
+var stary=new Array();
+var tinyx=new Array();
+var tinyy=new Array();
+var tinyv=new Array();
+
+window.onload=function() { if (document.getElementById) {
+  var i, rats, rlef, rdow;
+  for (var i=0; i<sparkles; i++) {
+    var rats=createDiv(3, 3);
+    rats.style.visibility="hidden";
+    rats.style.zIndex="999";
+    document.body.appendChild(tiny[i]=rats);
+    starv[i]=0;
+    tinyv[i]=0;
+    var rats=createDiv(5, 5);
+    rats.style.backgroundColor="transparent";
+    rats.style.visibility="hidden";
+    rats.style.zIndex="999";
+    var rlef=createDiv(1, 5);
+    var rdow=createDiv(5, 1);
+    rats.appendChild(rlef);
+    rats.appendChild(rdow);
+    rlef.style.top="2px";
+    rlef.style.left="0px";
+    rdow.style.top="0px";
+    rdow.style.left="2px";
+    document.body.appendChild(star[i]=rats);
+  }
+  set_width();
+  sparkle();
+}}
+
+function sparkle() {
+  var c;
+  if (Math.abs(x-ox)>1 || Math.abs(y-oy)>1) {
+    ox=x;
+    oy=y;
+    for (c=0; c<sparkles; c++) if (!starv[c]) {
+      star[c].style.left=(starx[c]=x)+"px";
+      star[c].style.top=(stary[c]=y+1)+"px";
+      star[c].style.clip="rect(0px, 5px, 5px, 0px)";
+      star[c].childNodes[0].style.backgroundColor=star[c].childNodes[1].style.backgroundColor=(colour=="random")?newColour():colour;
+      star[c].style.visibility="visible";
+      starv[c]=50;
+      break;
+    }
+  }
+  for (c=0; c<sparkles; c++) {
+    if (starv[c]) update_star(c);
+    if (tinyv[c]) update_tiny(c);
+  }
+  setTimeout("sparkle()", 40);
+}
+
+function update_star(i) {
+  if (--starv[i]==25) star[i].style.clip="rect(1px, 4px, 4px, 1px)";
+  if (starv[i]) {
+    stary[i]+=1+Math.random()*3;
+    starx[i]+=(i%5-2)/5;
+    if (stary[i]<shigh+sdown) {
+      star[i].style.top=stary[i]+"px";
+      star[i].style.left=starx[i]+"px";
+    }
+    else {
+      star[i].style.visibility="hidden";
+      starv[i]=0;
+      return;
+    }
+  }
+  else {
+    tinyv[i]=50;
+    tiny[i].style.top=(tinyy[i]=stary[i])+"px";
+    tiny[i].style.left=(tinyx[i]=starx[i])+"px";
+    tiny[i].style.width="2px";
+    tiny[i].style.height="2px";
+    tiny[i].style.backgroundColor=star[i].childNodes[0].style.backgroundColor;
+    star[i].style.visibility="hidden";
+    tiny[i].style.visibility="visible"
+  }
+}
+
+function update_tiny(i) {
+  if (--tinyv[i]==25) {
+    tiny[i].style.width="1px";
+    tiny[i].style.height="1px";
+  }
+  if (tinyv[i]) {
+    tinyy[i]+=1+Math.random()*3;
+    tinyx[i]+=(i%5-2)/5;
+    if (tinyy[i]<shigh+sdown) {
+      tiny[i].style.top=tinyy[i]+"px";
+      tiny[i].style.left=tinyx[i]+"px";
+    }
+    else {
+      tiny[i].style.visibility="hidden";
+      tinyv[i]=0;
+      return;
+    }
+  }
+  else tiny[i].style.visibility="hidden";
+}
+
+document.onmousemove=mouse;
+function mouse(e) {
+  if (e) {
+    y=e.pageY;
+    x=e.pageX;
+  }
+  else {
+    set_scroll();
+    y=event.y+sdown;
+    x=event.x+sleft;
+  }
+}
+
+window.onscroll=set_scroll;
+function set_scroll() {
+  if (typeof(self.pageYOffset)=='number') {
+    sdown=self.pageYOffset;
+    sleft=self.pageXOffset;
+  }
+  else if (document.body && (document.body.scrollTop || document.body.scrollLeft)) {
+    sdown=document.body.scrollTop;
+    sleft=document.body.scrollLeft;
+  }
+  else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+    sleft=document.documentElement.scrollLeft;
+    sdown=document.documentElement.scrollTop;
+  }
+  else {
+    sdown=0;
+    sleft=0;
+  }
+}
+
+window.onresize=set_width;
+function set_width() {
+  var sw_min=999999;
+  var sh_min=999999;
+  if (document.documentElement && document.documentElement.clientWidth) {
+    if (document.documentElement.clientWidth>0) sw_min=document.documentElement.clientWidth;
+    if (document.documentElement.clientHeight>0) sh_min=document.documentElement.clientHeight;
+  }
+  if (typeof(self.innerWidth)=='number' && self.innerWidth) {
+    if (self.innerWidth>0 && self.innerWidth<sw_min) sw_min=self.innerWidth;
+    if (self.innerHeight>0 && self.innerHeight<sh_min) sh_min=self.innerHeight;
+  }
+  if (document.body.clientWidth) {
+    if (document.body.clientWidth>0 && document.body.clientWidth<sw_min) sw_min=document.body.clientWidth;
+    if (document.body.clientHeight>0 && document.body.clientHeight<sh_min) sh_min=document.body.clientHeight;
+  }
+  if (sw_min==999999 || sh_min==999999) {
+    sw_min=800;
+    sh_min=600;
+  }
+  swide=sw_min;
+  shigh=sh_min;
+}
+
+function createDiv(height, width) {
+  var div=document.createElement("div");
+  div.style.position="absolute";
+  div.style.height=height+"px";
+  div.style.width=width+"px";
+  div.style.overflow="hidden";
+  return (div);
+}
+
+function newColour() {
+  var c=new Array();
+  c[0]=255;
+  c[1]=Math.floor(Math.random()*256);
+  c[2]=Math.floor(Math.random()*(256-c[1]/2));
+  c.sort(function(){return (0.5 - Math.random());});
+  return ("rgb("+c[0]+", "+c[1]+", "+c[2]+")");
+}
+// ]]>
+</script>
+<link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8"> <title> stories i've written ฅ(＾・ω・＾ฅ)゜♡ </title>
+     <link rel="shortcut icon" type="image/jpg" href="angelfavi.gif"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+        <a id="homepage" href="https://bwandaid.my.to/"> <img src="home.gif"style="width:25px;height:25px;"> return home ♡ </a>
+    <div class="story"> there was once a man named noah shirr. he attended columbia university and was planning to become a grand cosmologist or astronomer. ever since he was young, he had a fascination with the abyss that he faced at night. face to face with the night sky, he wanted to reach out forever and ever and ever and ever and ever and ever and ever and ever and ever and ever and ever and ever and ever and ever and ever and ever and ever and ever and ever and
+<br>
+he always wanted to know what was out there. he spent time studying space in the library after school and extra focus in his science classes. when confronted with the question "are you going to do any extracurriculars or sports?" he simply shrugged. a singular time. 
+<br>
+before he knew it, he was at columbia. noah shirr was a soon-to-be columbia undergraduate. undoubtedly, this was something to be proud of. yet, inside, he felt that there was something missing. graduating top of his class and with a guaranteed career in front of him, how could he ever feel this way? 
+<br>
+well, i don't know.
+<br>
+supposedly, he said that he felt that there was more than just getting rich and famous. i understand that. for many, having enough money for generations and having your name in history books is a goal. but, it's not always as materialistic as money and fame. the thing is, i don't know what he was missing. i don't think he really knew either.
+<br>
+one day, he quietly left a house party. he excused himself and left with a courteous smile. no one really took notice of it as something too out of the ordinary. he was known for being quite an introvert; perhaps the party just tired his social battery out a bit early.
+but, i was there that night. i trailed behind him, secretly at first, then coming up to him once he stopped at the cliff. "noah," i greeted him, "how are you doing?" 
+<br>
+he turned to me and smiled very slightly. "well hello," he greeted me back. "feeling a bit drained?" i asked, trying as subtly as i could to ask him what was wrong. to be honest, i was under the impression he was  a sort of fragile and sensitive guy. not that it's bad to have those traits, but as someone who wasn't too close to him, i didn't want to seem nosy.
+<br>
+"yeah, kinda," he nodded. "i have a lot on my mind right now." 
+<br>
+this piqued my interest. "i'd think you would. a genius like you would have quite interesting thoughts. everyday people may often wonder what goes through the mind of a genius, no?" 
+<br>
+"i suppose you're right. but, i'll admit that i don't really know what i'm thinking about either. it's a long mix of things and ideas." 
+<br>
+"what do you mean?"
+<br>
+"the thing is, ever since graduation, i've been feeling empty."
+<br>
+"..."
+
+"empty," he continues, "i've been feeling like there's something missing. the something that i went through all of this for."
+<br>
+he sighs and pauses momentarily. looking out to the sky and the sea, he continues,
+<br>
+"i've revolved my whole life around going to school and becoming an astronomer and knowing stuff about space, but what was all of that for? i still feel like there's a missing piece of my soul out there."
+<br>
+i let him continue and pause for as long as he liked. hearing him speak, listening to him speak, it made me realize that i didn't know as much about him as i thought i did. or, moreso my perception of him was completely different than who he really was.
+<br>
+"my only question that i want answers to is just 'why?' why are we here? what does the universe want to tell us? does the universe know what existence is for? the mere goal of reproducing as a species by itself feels whole, but in the grand scheme of things, it feels so minuscule. i feel so minuscule."
+"every night i look up at the night sky the same way i did as a kid. with the same awe and wonder as i did so long ago, i still want answers. i know it's foolish of me, but what can i say? doesn't everyone want answers?"
+<br>
+he paused again, this time it was much, much longer. he sighed and turned around. "hm, i don't know. i don't know what the point of me ranting about this was." i turned around as well and opened my mouth to speak. "it was a pleasure talking to you, i'll get back to you if i ever have an insight into my eternal question."
+<br>
+then he was off.
+days later, i heard from colleagues that he had unfortunately left our world. i asked around, and all i could figure out was a suicide. as grim as it may sound, a suicide doesn't feel as surprising as it would've been before that conversation. my only question regarding his death is... did he ever find those answers? the answers to the biggest question of them all: why?
+<br>
+again, a bit grim in nature, but i wonder how he went about it. noose? pills and drugs? drowning? gunshot? all of them seem gruesome, and yet, i could picture him in all of those situations, as scary as it sounds. 
+<br>
+i got a letter in the mail today. 
+
+TO: 
+FROM: NOAH R. SHIRR
+<br>
+Today i found the answers to my eternal question. I knew i promised you I would get back to you if i ever got Any insight; so here I am. 
+<br>
+The universe is a grand place. Thing. To be honest, i don't know what it is even today. i am in this Universe, i am the universe, we are the universe. 
+<br>
+Before i go, i decided i should tell someone about my observation. 
+<br>
+The universe said I love you. it looked upon us all and we looked back into it's everlasting gaze. it knew my question before i knew what it even was. and as a parting gift, my answer was granted. The universe said I love you, and that the universe said that soon you will come far and look back and think "i am proud." And the universe said that all of your hope is possible you just have to find that light and fight that dark both within you. The universe told me and to extension you and everyone and everything that we are unity and that we are the universe and we are only seeing ourselves and wondering who and what this meaning is. And the universe said that one day you will understand that You are not alone or gone but forever with and here and there and eveywhere because you and I and everyone is everything
+<br>
+i will wake up now my dear friend
+<br>
+And the universe said again and again
+I love you
