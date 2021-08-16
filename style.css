@@ -208,6 +208,14 @@ li {
   margin-left: 30px;
 }
 
+.chat {
+  position: relative;
+  top: -1050px;
+  left: 1000px;
+  margin-left: 30px;
+}
+
+
 /* thoughts!!!!! */
 
 .thoughts {
