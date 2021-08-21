@@ -69,6 +69,7 @@ a:active {
     border-style: double;
     border-width: medium;
     border-color: white;
+  font-family: 'Balsamiq Sans';
 }
 
 .changes {
@@ -85,6 +86,7 @@ a:active {
     border-style: double;
     border-width: medium;
     border-color: white;
+  font-family: 'Balsamiq Sans';
 }
 
 li {
@@ -95,6 +97,7 @@ li {
   margin-left: 15px;
   position:relative; 
   left: 350px;
+  font-family: 'Balsamiq Sans';
 }
 
 
@@ -117,6 +120,8 @@ li {
   position: fixed;
   left: 1325px;
   top: 1px;
+  font-family: 'Fredoka One';
+  
 }
 
  #playlist {
@@ -197,6 +202,7 @@ li {
   margin-bottom: 25px;
   color: #1c0303;
   background-color: #fff6f7;
+  font-family: 'Balsamiq Sans';
 }
 
 .stampz {
@@ -208,6 +214,7 @@ li {
   position: relative;
   top: -290px;
   margin-left: 30px;
+  font-family: 'Balsamiq Sans';
 }
 
 
@@ -228,12 +235,14 @@ li {
   border-style: ridge;
   border-width: 3px;
   padding: 10px;
+  font-family: 'Balsamiq Sans';
 }
 
 .tales {
   background-image:url('https://64.media.tumblr.com/ea568d43430e0f881680e5cdb622a1b3/tumblr_inline_n258q4r8c01qhwjx8.png');
   background-repeat: repeat;
   color: white;
+  font-family: 
 }
 
 .story {
@@ -244,6 +253,7 @@ li {
   border-style: ridge;
   border-width: 3px;
   padding: 10px;
+  font-family: 'Balsamiq Sans';
 }
   
   
@@ -255,6 +265,7 @@ li {
   background-image:url('img/sky.gif');
   background-repeat: repeat;
   color: black;
+    
 }
 
 #projects {
@@ -281,6 +292,7 @@ li {
   border: 1px solid #66545E;
   background-color: #A39193;
   width: 1225px;
+  font-family: 'Balsamiq Sans';
 }
 
 .tab button {
@@ -291,6 +303,7 @@ li {
   cursor: pointer;
   padding: 10px 10px;
   transition: 0.3s;
+  font-family: 'Balsamiq Sans';
 }
 .tab button:hover {
   background-color: #5c494b;
@@ -307,6 +320,7 @@ li {
   border-top: none;
   background-color: #A39193;
   width: 1225px;
+  font-family: 'Balsamiq Sans';
 }
 
 
